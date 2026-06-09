@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Shirlynne 🎉</title>
+
+<style>
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: radial-gradient(circle, #ff9a9e, #fad0c4, #fbc2eb);
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
+}
+
+/* 3D rotating name */
+.name-3d {
+  font-size: 60px;
+  margin-top: 40px;
+  animation: rotate3d 6s infinite linear;
+  text-shadow: 0 0 20px white;
+}
+
+@keyframes rotate3d {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+/* Typing text */
+#typing {
+  font-size: 22px;
+  margin-top: 10px;
+  min-height: 30px;
+}
+
+/* Gallery */
+.gallery {
+  margin-top: 20px;
+}
+
+.gallery img {
+  width: 200px;
+  height: 200px;
+  border-radius: 15px;
+  margin: 10px;
+  box-shadow: 0 0 15px white;
+  transition: transform 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.1);
+}
+
+/* Hearts */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  color: red;
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* Sparkles */
+.sparkle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+  0%,100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* Fireworks */
+.firework {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: yellow;
+  animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(20); opacity: 0; }
+}
+
+/* Button */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="name-3d">🎉 Shirlynne 🎉</div>
+
+<div id="typing"></div>
+
+<div class="gallery">
+  <img src="photo1.jpg">
+  <img src="photo2.jpg">
+  <img src="photo3.jpg">
+  <img src="photo4.jpg">
+  <img src="photo5.jpg">
+  <img src="photo6.jpg">
+
+</div>
+
+<button onclick="burst()">Click for Surprise 🎆</button>
+
+<!-- MUSIC -->
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* Typing effect */
+const text = "Happy Birthday Shirlynne ❤️ You are special today and always 🎂✨,you mean a lot to me and you are one of a kind.Since the first day we met until now you have been such a blessing.Nakupenda sana and i wish you a happy happy birthday. i love you.From Kenny ";
+let i = 0;
+function type() {
+  if (i < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(type, 60);
+  }
+}
+type();
+
+/* Hearts */
+function heart() {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "❤️";
+  h.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 6000);
+}
+setInterval(heart, 250);
+
+/* Sparkles */
+function sparkle() {
+  const s = document.createElement("div");
+  s.className = "sparkle";
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.top = Math.random() * 100 + "vh";
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 2000);
+}
+setInterval(sparkle, 150);
+
+/* Fireworks burst */
+function burst() {
+  for (let i = 0; i < 15; i++) {
+    const f = document.createElement("div");
+    f.className = "firework";
+    f.style.left = Math.random() * window.innerWidth + "px";
+    f.style.top = Math.random() * window.innerHeight + "px";
+    document.body.appendChild(f);
+    setTimeout(() => f.remove(), 1000);
+  }
+}
+
+/* Click sparkles */
+document.addEventListener("click", (e) => {
+  const s = document.createElement("div");
+  s.className = "sparkle";
+  s.style.left = e.clientX + "px";
+  s.style.top = e.clientY + "px";
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 1000);
+});
+
+</script>
+
+</body>
+</html>
